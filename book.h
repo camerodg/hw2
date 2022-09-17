@@ -1,3 +1,6 @@
+#include "util.h"
+#include <string>
+#include <iostream>
 #include "product.h"
 class Book: public Product {
 	public: 

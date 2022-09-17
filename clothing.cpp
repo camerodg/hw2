@@ -1,22 +1,17 @@
 #include "clothing.h"
-Clothing::Clothing(const std::string name, double price, int qty, const  std::string size, const  std::string brand)
-: Product("clothing", name, price, qty)
-{ 
-     brand_ = brand;
-		 size_ = size;
+Clothing::Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand)
+  : Product(category, name, price, qty) 
+{
+  size_ = size;
+  brand_ = brand;
 }
 
-std::set< std::string>Clothing::keywords() const
+std::set<std::string> Clothing::keywords() const 
 {
-  //Creates key set that first stores brand 
-	//Grabs string of the brand 
-	//Returns set with all the keywords for the item 
-    std::set< std::string>key = parseStringToWords(brand_);
-		key.insert(brand_);
-		std::set< std::string>names = parseStringToWords(name_);
-		key.insert(names.begin(),names.end());
-		return key;
+  std::string keyword = name_ + "\n" + size_ + "\n" + brand_;
+  return parseStringToWords(keyword);
 }
+
 std::string Clothing::displayString() const
 {
   

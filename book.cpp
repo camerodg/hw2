@@ -1,6 +1,6 @@
 #include "book.h"
-Book::Book(const std::string name, double price, int qty, std::string category, const std::string isbn, const std::string author)
-: Product("book", name, price, qty)
+Book::Book(const std::string name, double price, int qty, const std::string category, const std::string isbn, const std::string author)
+: Product(category, name, price, qty)
 {
 	isbn_ = isbn;
 	author_ = author;
@@ -8,16 +8,8 @@ Book::Book(const std::string name, double price, int qty, std::string category, 
 
 std::set<std::string> Book::keywords() const
 {
-	//Creates key set that first stores author 
-	//Grabs string of the book's name 
-	//Returns set with all the keywords for the item 
-	 std::set<std::string> key = parseStringToWords(author_);
-	 key.insert(isbn_);
-	 //Grabs string of the book's name 
-	 std::set<std::string> namesSet = parseStringToWords(name_);
-	 key.insert(namesSet.begin(),namesSet.end());
-	 //Returns set with all the keywords for the item 
-	 return key;
+	 std::string keyword = name_ + "\n" + author_ + "\n" + isbn_;
+  return parseStringToWords(keyword);
 }
 
 std::string Book::displayString()const

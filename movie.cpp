@@ -1,20 +1,15 @@
 #include "movie.h"
-Movie::Movie(const std::string name, double price, int qty, const std::string genre, const std::string rating)
-: Product("movie",name, price, qty)
+Movie::Movie(const std::string category, const std::string name, double price, int qty, const std::string genre, const std::string rating)
+: Product(category, name, price, qty)
 {
 	genre_ = genre;
 	rating_ = rating;
 }
 	std::set<std::string> Movie::keywords() const
 	{
-		//Creates key set that first stores genre 
-	//Grabs string of the name 
-	//Returns set with all the keywords for the item
-		std::set<std::string>key = parseStringToWords(genre_);
-		key.insert(genre_);
-		std::set<std::string>name = parseStringToWords(name_);
-		key.insert(name.begin(),name.end());
-		return key;
+
+		std::string keyword = name_ + "\n" + genre_ + "\n" + rating_;
+    return parseStringToWords(keyword);
 	}
 	std::string Movie::displayString() const
 	{
