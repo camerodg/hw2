@@ -1,6 +1,5 @@
 #ifndef UTIL_H
 #define UTIL_H
-
 #include <string>
 #include <iostream>
 #include <set>
@@ -13,20 +12,34 @@
 template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 {
-
-
-
-
-
+	  //Creates returning set 
+    std::set<T> returningSet;
+		//Sorts both of the sets 
+		sort(s1.begin(), s1.end());
+		sort(s2.begin(), s2.end());
+		//iterates through and find matches 
+		//store the matches in the returning set 
+		for(typename std::set<T>::iterator it = s1.begin(); it != s1.end(); ++it)
+		{
+			if(s2.find(*it) != s2.end())
+			{
+				returningSet.insert(*it);
+			}
+		}
+		return returningSet;
 }
 template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 {
-
-
-
-
-
+    //Creates returning set 
+    std::set<T> returningSet = s1;
+		
+		//iterates through and store the matches in a union set 
+		for(typename std::set<T>::iterator it = s2.begin(); it != s2.end(); ++it)
+		{
+         returningSet.insert(*it);
+		}
+		return returningSet;			
 }
 
 /***********************************************/
