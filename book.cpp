@@ -1,9 +1,16 @@
 #include "book.h"
-Book::Book(const std::string name, double price, int qty, const std::string category, const std::string isbn, const std::string author)
+#include "util.h"
+#include <iomanip>
+Book::Book(std::string category, const std::string name, const std::string author, const std::string isbn, double price, int qty)
 : Product(category, name, price, qty)
 {
 	isbn_ = isbn;
 	author_ = author;
+}
+
+Book::~Book()
+{
+
 }
 
 std::set<std::string> Book::keywords() const
@@ -14,8 +21,9 @@ std::set<std::string> Book::keywords() const
 
 std::string Book::displayString()const
 {
-	return "book\n" + name_ + "\n" + std::to_string(price_) + "\n" + std::to_string(qty_) + "\n" + isbn_
-		+ "\n" +author_+"\n";	
+	return category_ + "\n" + name_ + "\n" + "Author: " + author_ + " ISBN: " + isbn_ + "\n" + std::to_string(price_) + " " + std::to_string(qty_) + " left";
+	
+		
 }
 
 void Book::dump(std::ostream &os)

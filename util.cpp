@@ -15,7 +15,7 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
-   string<set> trimSet;
+   set<string> trimSet;
 	 //get rid of any white spaces 
 		rawWords = trim(rawWords);
 		//convert to lower 
